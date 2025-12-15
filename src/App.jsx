@@ -2,6 +2,7 @@ import {useState, useEffect} from "react";
 import Header from "./components/Header";
 import SearchBar from "./components/SearchBar";
 import CourseCard from "./components/CourseCard";
+
 const App = () => {
 
   const [advice, setAdvice] = useState("");
@@ -111,24 +112,27 @@ const filteredCourses = coursesData.filter(course => {
 })
 
   return (
-    <>
-      <Header advice={advice} />
+  <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-100 to-purple-100">
 
-      <SearchBar
-        searchTerm={searchTerm}
-        setSearchTerm={setSearchTerm}
-        selectedCategory={selectedCategory}
-        setSelectedCategory={setSelectedCategory}
-        categories={categories}
-      />
 
-      <div className="max-w-6xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {filteredCourses.map(course => (
-          <CourseCard key={course.id} course={course} />
-        ))}
-      </div>
-    </>
-  );
+    <Header advice={advice} />
+
+    <SearchBar
+      searchTerm={searchTerm}
+      setSearchTerm={setSearchTerm}
+      selectedCategory={selectedCategory}
+      setSelectedCategory={setSelectedCategory}
+      categories={categories}
+    />
+
+    <div className="max-w-6xl mx-auto px-4 pb-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {filteredCourses.map(course => (
+        <CourseCard key={course.id} course={course} />
+      ))}
+    </div>
+  </div>
+);
+
 };
 
 export default App;
